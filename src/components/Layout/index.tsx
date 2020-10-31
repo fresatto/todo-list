@@ -1,34 +1,33 @@
-import React, { useState, useCallback, FormEvent } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import React, { useState, useContext, useCallback, FormEvent } from 'react';
+
 import TodoList from '../TodoList';
-import { Todo } from '../TodoItem';
+
 import { Container, Wrapper, InputWrapper } from './styles';
+import { TodoContext } from '../../context/TodosContext';
 
 const Layout: React.FC = () => {
   const [todoInput, setTodoInput] = useState('');
-  const [todos, setTodos] = useState<Todo[]>([]);
+  const { handleAddTodo } = useContext(TodoContext);
 
-  const handleAddTodo = useCallback(
-    (e: FormEvent, title: string) => {
+  const handleSubmit = useCallback(
+    (e: FormEvent) => {
       e.preventDefault();
 
-      setTodos([...todos, { title, id: uuidv4() }]);
+      if (!todoInput) {
+        alert('Por favor, digite alguma coisa');
+        return;
+      }
+
+      handleAddTodo(e, todoInput);
       setTodoInput('');
     },
-    [todos],
-  );
-
-  const handleDeleteTodo = useCallback(
-    (id: string) => {
-      setTodos(todos.filter(todo => todo.id !== id));
-    },
-    [todos],
+    [handleAddTodo, todoInput],
   );
 
   return (
     <Container>
       <Wrapper>
-        <InputWrapper onSubmit={e => handleAddTodo(e, todoInput)}>
+        <InputWrapper onSubmit={handleSubmit}>
           <input
             type="text"
             placeholder="Digite"
@@ -37,7 +36,7 @@ const Layout: React.FC = () => {
           />
           <button type="submit">+</button>
         </InputWrapper>
-        <TodoList todos={todos} handleDeleteTodo={handleDeleteTodo} />
+        <TodoList />
       </Wrapper>
     </Container>
   );

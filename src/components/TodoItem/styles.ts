@@ -10,6 +10,8 @@ export const Container = styled.div`
   justify-content: space-between;
   align-items: center;
 
+  flex-shrink: 0;
+
   width: 100%;
 
   height: 32px;

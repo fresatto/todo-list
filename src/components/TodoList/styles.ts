@@ -11,6 +11,7 @@ export const Container = styled.div<ContainerProps>`
   flex: 1;
   border-radius: 4px;
   margin-top: 24px;
+  overflow: auto;
 
   > p {
     font-size: 12px;

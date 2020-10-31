@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import { Container } from './styles';
+import { TodoContext } from '../../context/TodosContext';
 
 export interface Todo {
   id: string;
@@ -9,11 +10,12 @@ export interface Todo {
 
 interface TodoItemProps {
   data: Todo;
-  handleDeleteTodo(id: string): void;
 }
 
-const TodoItem: React.FC<TodoItemProps> = ({ data, handleDeleteTodo }) => {
+const TodoItem: React.FC<TodoItemProps> = ({ data }) => {
   const { id, title } = data;
+
+  const { handleDeleteTodo } = useContext(TodoContext);
   return (
     <Container>
       <span>{title}</span>

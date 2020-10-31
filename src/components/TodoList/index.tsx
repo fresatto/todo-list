@@ -1,14 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
-import TodoItem, { Todo } from '../TodoItem';
+import TodoItem from '../TodoItem';
 import { Container } from './styles';
+import { TodoContext } from '../../context/TodosContext';
 
-interface TodoListProps {
-  todos: Todo[];
-  handleDeleteTodo(id: string): void;
-}
-
-const TodoList: React.FC<TodoListProps> = ({ todos, handleDeleteTodo }) => {
+const TodoList: React.FC = () => {
+  const { todos } = useContext(TodoContext);
   const hasItems = !!todos.length;
 
   return (
@@ -16,13 +13,7 @@ const TodoList: React.FC<TodoListProps> = ({ todos, handleDeleteTodo }) => {
       {!hasItems ? (
         <p>Nenhum item cadastrado</p>
       ) : (
-        todos.map(todo => (
-          <TodoItem
-            key={todo.id}
-            data={todo}
-            handleDeleteTodo={handleDeleteTodo}
-          />
-        ))
+        todos.map(todo => <TodoItem key={todo.id} data={todo} />)
       )}
     </Container>
   );
