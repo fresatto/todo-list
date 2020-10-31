@@ -8,6 +8,8 @@ interface Todo {
 
 interface TodoContextData {
   todos: Todo[];
+  animationInProgress: boolean;
+  setAnimationInProgress(inProgress: boolean): void;
   handleAddTodo(e: FormEvent, title: string): void;
   handleDeleteTodo(id: string): void;
 }
@@ -18,6 +20,7 @@ export const TodoContext = createContext<TodoContextData>(
 
 const TodoProvider: React.FC = ({ children }) => {
   const [todos, setTodos] = useState<Todo[]>([]);
+  const [animationInProgress, setAnimationInProgress] = useState(false);
 
   const handleAddTodo = useCallback(
     (e: FormEvent, title: string) => {
@@ -39,6 +42,8 @@ const TodoProvider: React.FC = ({ children }) => {
     <TodoContext.Provider
       value={{
         todos,
+        animationInProgress,
+        setAnimationInProgress,
         handleAddTodo,
         handleDeleteTodo,
       }}

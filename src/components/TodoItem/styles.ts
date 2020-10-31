@@ -1,11 +1,7 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
+import { animated } from 'react-spring';
 
-const slideIn = keyframes`
-  from { opacity: 0; transform: translateY(20px)}
-  to { opacity: 1; transform: translateY(0)}
-`;
-
-export const Container = styled.div`
+export const Container = styled(animated.div)`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -19,8 +15,6 @@ export const Container = styled.div`
 
   border-radius: 4px;
   background-color: #eeeeee;
-
-  animation: ${slideIn} 500ms ease-in-out;
 
   & + div {
     margin-top: 8px;

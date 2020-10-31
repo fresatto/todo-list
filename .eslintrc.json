@@ -29,6 +29,7 @@
     "no-use-before-define": "off",
     "react/prop-types": "off",
     "@typescript-eslint/ban-types": "off",
+    "react/jsx-props-no-spreading": "off",
     "import/extensions": [
       "error",
       "ignorePackages",

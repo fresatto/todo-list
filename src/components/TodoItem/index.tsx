@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useCallback } from 'react';
 
 import { Container } from './styles';
 import { TodoContext } from '../../context/TodosContext';
@@ -10,16 +10,25 @@ export interface Todo {
 
 interface TodoItemProps {
   data: Todo;
+  style: object;
 }
 
-const TodoItem: React.FC<TodoItemProps> = ({ data }) => {
+const TodoItem: React.FC<TodoItemProps> = ({ data, style }) => {
   const { id, title } = data;
+  const { handleDeleteTodo, setAnimationInProgress } = useContext(TodoContext);
 
-  const { handleDeleteTodo } = useContext(TodoContext);
+  const onDelete = useCallback(
+    (_id: string) => {
+      setAnimationInProgress(true);
+      handleDeleteTodo(_id);
+    },
+    [handleDeleteTodo, setAnimationInProgress],
+  );
+
   return (
-    <Container>
+    <Container style={style}>
       <span>{title}</span>
-      <button type="button" onClick={() => handleDeleteTodo(id)}>
+      <button type="button" onClick={() => onDelete(id)}>
         Delete
       </button>
     </Container>
