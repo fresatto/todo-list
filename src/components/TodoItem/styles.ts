@@ -11,7 +11,7 @@ export const Container = styled(animated.div)`
   width: 100%;
 
   height: 32px;
-  padding: 0 8px 0 16px;
+  padding: 0 16px;
 
   border-radius: 4px;
   background-color: #eeeeee;

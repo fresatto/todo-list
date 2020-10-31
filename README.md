@@ -1,3 +1,7 @@
+## Getting Started
+
+Para rodar o projeto basta executar `yarn install` para instalar as dependências do projeto e em seguida `yarn start` para executar o projeto.
+
 ## Padrões de código
 
 Para padronizar o código utilizei o ESLint com a style guide do AirBnb e o prettier para automatizar a formatação conforme o projeto fosse desenvolvido.
