@@ -12,4 +12,6 @@ export default createGlobalStyle`
   input, button {
     outline: 0;
   }
+
+  button { cursor: pointer; }
 `;

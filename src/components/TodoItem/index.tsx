@@ -1,7 +1,8 @@
 import React, { useContext, useCallback } from 'react';
 
-import { Container } from './styles';
 import { TodoContext } from '../../context/TodosContext';
+import TrashIcon from '../../assets/img/ic-delete.png';
+import { Container } from './styles';
 
 export interface Todo {
   id: string;
@@ -29,7 +30,7 @@ const TodoItem: React.FC<TodoItemProps> = ({ data, style }) => {
     <Container style={style}>
       <span>{title}</span>
       <button type="button" onClick={() => onDelete(id)}>
-        Delete
+        <img src={TrashIcon} alt="Delete todo" />
       </button>
     </Container>
   );

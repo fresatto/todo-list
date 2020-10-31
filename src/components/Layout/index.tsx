@@ -1,8 +1,9 @@
 import React, { useState, useContext, useCallback, FormEvent } from 'react';
 
 import TodoList from '../TodoList';
+import PlusIcon from '../../assets/img/ic-add.png';
 
-import { Container, Wrapper, InputWrapper } from './styles';
+import { Container, Wrapper, AddTodoForm } from './styles';
 import { TodoContext } from '../../context/TodosContext';
 
 const Layout: React.FC = () => {
@@ -27,15 +28,17 @@ const Layout: React.FC = () => {
   return (
     <Container>
       <Wrapper>
-        <InputWrapper onSubmit={handleSubmit}>
+        <AddTodoForm onSubmit={handleSubmit}>
           <input
             type="text"
             placeholder="Digite"
             value={todoInput}
             onChange={e => setTodoInput(e.target.value)}
           />
-          <button type="submit">+</button>
-        </InputWrapper>
+          <button type="submit">
+            <img src={PlusIcon} alt="Adicionar" />
+          </button>
+        </AddTodoForm>
         <TodoList />
       </Wrapper>
     </Container>

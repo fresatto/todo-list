@@ -24,4 +24,14 @@ export const Container = styled(animated.div)`
     font-size: 14px;
     color: #606060;
   }
+
+  button {
+    background: transparent;
+    border: 0;
+
+    img {
+      width: 12.44px;
+      height: 16px;
+    }
+  }
 `;

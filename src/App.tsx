@@ -1,17 +1,14 @@
 import React from 'react';
 
-import Layout from './components/Layout';
-import GlobalStyles from './styles/global';
+import AppProvider from './components/AppProvider';
 
-import TodoProvider from './context/TodosContext';
+import GlobalStyles from './styles/global';
 
 const App: React.FC = () => {
   return (
     <>
       <GlobalStyles />
-      <TodoProvider>
-        <Layout />
-      </TodoProvider>
+      <AppProvider />
     </>
   );
 };

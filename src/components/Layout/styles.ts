@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { darken } from 'polished';
 
 export const Container = styled.main`
   display: flex;
@@ -19,7 +20,7 @@ export const Wrapper = styled.div`
   border-radius: 4px;
 `;
 
-export const InputWrapper = styled.form`
+export const AddTodoForm = styled.form`
   display: flex;
 
   > input {
@@ -37,6 +38,31 @@ export const InputWrapper = styled.form`
 
     &::placeholder {
       color: #909090;
+    }
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+
+    background-color: #40d9b8;
+    border: 0;
+
+    transition: 200ms;
+
+    img {
+      width: 24px;
+      height: 24px;
+    }
+
+    &:hover {
+      background-color: ${darken(0.1, '#40d9b8')};
     }
   }
 `;
